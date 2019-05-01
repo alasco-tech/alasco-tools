@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Clean Up Cloudformation
           command:
-              python clean_up_cf/remove_branchless_stacks.py
+              python clean_up_cf/remove_branchless_stacks.py "alasco-tech/alasco-app" --region "eu-central-1"
 
 workflows:
   clean_up_cloudformation:
