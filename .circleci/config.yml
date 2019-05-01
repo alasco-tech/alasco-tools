@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  remove_branchless_stacks:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - run:
+          name: Install Dependencies
+          command: |
+              pip install -r clean_up_cf/requirements.txt
+      - run:
+          name: Clean Up Cloudformation
+          command:
+              python clean_up_cf/remove_branchless_stacks.py
+
+workflows:
+  clean_up_cloudformation:
+    jobs:
+      - remove_branchless_stacks
+          context: cf_clean_up
