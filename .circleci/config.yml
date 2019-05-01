@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-              pip install -r clean_up_cf/requirements.txt
+              pip install --user -r clean_up_cf/requirements.txt
       - run:
           name: Clean Up Cloudformation
           command:
