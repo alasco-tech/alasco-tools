@@ -17,5 +17,5 @@ jobs:
 workflows:
   clean_up_cloudformation:
     jobs:
-      - remove_branchless_stacks
+      - remove_branchless_stacks:
           context: cf_clean_up
