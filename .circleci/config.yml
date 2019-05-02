@@ -10,7 +10,7 @@ jobs:
           name: Run Black
           command: |
             sudo pip install black
-            black --check
+            black --check .
 
   remove_branchless_stacks:
     docker:
