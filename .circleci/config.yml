@@ -6,9 +6,10 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - run:
-          name: Build steps would run here - if we had any
+          name: Run Black
           command: |
-            echo "Nothing to do!"
+            pip install --user black
+            black --check
 
   remove_branchless_stacks:
     docker:
