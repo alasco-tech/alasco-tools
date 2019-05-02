@@ -33,11 +33,11 @@ workflows:
   clean_up_cloudformation:
     triggers:
       - schedule:
-          cron: "15 * * * *"
+          cron: "30 * * * *"
           filters:
             branches:
               only:
-              - staging
+              - master
     jobs:
       - remove_branchless_stacks:
           context: cf_clean_up
