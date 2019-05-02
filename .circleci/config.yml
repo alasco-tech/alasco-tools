@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Run Black
           command: |
-            pip install --user black
+            sudo pip install black
             black --check
 
   remove_branchless_stacks:
