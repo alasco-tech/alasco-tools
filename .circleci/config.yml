@@ -5,9 +5,10 @@ jobs:
     docker:
       - image: circleci/python:3.7
     steps:
-      - run: Build steps would run here - if we had any
-      - command: |
-          echo "Nothing to do!"
+      - run:
+          name: Build steps would run here - if we had any
+          command: |
+            echo "Nothing to do!"
 
   remove_branchless_stacks:
     docker:
@@ -26,7 +27,7 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      run_build
+      - run_build
 
   clean_up_cloudformation:
     triggers:
