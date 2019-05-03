@@ -9,6 +9,27 @@ Useful scripts and other Reusuable things
 A regular circleci job that deletes all stacks we no longer have branches on
 github for.
 
+#### Usage
+
+It's assumed that the AWS credentials are set up in a way that [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) can find
+them. For example by setting the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+environment variables. REMINDER: Never share your AWS credentials with anybody!
+
+The [github access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) needs to be set in the environment variable
+`GITHUB_TOKEN`.
+
+```bash
+remove_branchless_stacks.py $repository
+```
+
+#### How it works
+The script gets all branches from the given repository and compares them to
+stacks on AWS Cloudformation. Those stacks are assumed to have a tag with the
+key `branch` which is the relation to the branch name on Github.
+
+All stacks that have no branch (anymore) will be deleted! Attached S3 buckets
+will be truncated first - otherwise the stack-deletion fails.
+
 
 ## Contributing
 
@@ -19,7 +40,7 @@ Easiest start is probably to create a virtual environment for the alasco-tools.
 (It is assumed that you've python (>3.6) and virtual environments set up on your
 computer)
 
-```python
+```bash
 python3 -m venv alasco-tools
 mkdir alasco-tools/src/
 cd alasco-tools/src/
