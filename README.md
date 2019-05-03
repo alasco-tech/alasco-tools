@@ -74,4 +74,4 @@ If you want to set it up manually, install black via `pip install black`.
 
 ## License
 
-See the [LICENSE](./LICENSE) file. In short: we use the (MIT)[https://choosealicense.com/licenses/mit/] license.
+See the [LICENSE](./LICENSE) file. In short: we use the [MIT](https://choosealicense.com/licenses/mit/) license.
