@@ -7,7 +7,7 @@ Useful scripts and other Reusuable things
 
 ### Clean Up CF
 A regular circleci job that deletes all stacks we no longer have branches on
-github for.
+github for. A more detailed description on how it works and the motivation behind it can be found in the blog post https://alasco-tech.github.io/2019/02/14/engineer-to-pm.html
 
 #### Usage
 
