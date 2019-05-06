@@ -65,8 +65,8 @@ is nicely formatted. If your code is not formatted properly, CircleCI will fail 
 
 There is a pre-commit hook that invokes black upon every commit. To install the pre commit, do the following:
 
-    [Install pre-commit](https://pre-commit.com/#install)
-    Navigate to the project root and run `pre-commit install`
+1. [Install pre-commit](https://pre-commit.com/#install)
+2. Navigate to the project root and run `pre-commit install`
 
 
 If you want to set it up manually, install black via `pip install black`.
