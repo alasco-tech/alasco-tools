@@ -110,7 +110,7 @@ def remove_branchless_stacks(repo: str, region: str):
 
     stacks_to_check = set()
     for branch, stack_name in stacks.items():
-        if branch in branches or _PROTECTED_STACKS:
+        if branch in branches or branch in _PROTECTED_STACKS:
             continue
         stacks_to_check.add(stack_name)
 
