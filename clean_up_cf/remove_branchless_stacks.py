@@ -89,7 +89,7 @@ def _clean_s3_bucket(stacks: Set[str], region: str):
 
 
 def _delete_stacks(stacks: Set[str], region: str):
-    cf_client = boto3.client("s3", region_name=region)
+    cf_client = boto3.client("Cloudformation", region_name=region)
 
     for stack_name in stacks:
         try:
