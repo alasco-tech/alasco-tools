@@ -117,6 +117,10 @@ def remove_branchless_stacks(repo: str, region: str):
     if not stacks_to_check:
         print("Found no stacks to be deleted")
         return
+    
+    print("Deleting stacks:")
+    for stack in stacks_to_check:
+        print("  - {}".format(stack))
 
     _clean_s3_bucket(stacks_to_check, region)
     _delete_stacks(stacks_to_check, region)
