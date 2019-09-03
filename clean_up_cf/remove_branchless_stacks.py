@@ -27,9 +27,11 @@ import boto3
 import github
 
 
-_PROTECTED_STACKS = ("alasco-app-staging-staging",
-                    "alasco-app-production-production",
-                    "alasco-app-production-demo")
+_PROTECTED_STACKS = (
+    "alasco-app-staging-staging",
+    "alasco-app-production-production",
+    "alasco-app-production-demo",
+)
 
 
 def _create_repo_client(repo: str) -> github.Repository.Repository:
