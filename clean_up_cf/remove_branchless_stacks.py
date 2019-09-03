@@ -27,7 +27,9 @@ import boto3
 import github
 
 
-_PROTECTED_STACKS = ("alasco-app-staging", "alasco-app-production")
+_PROTECTED_STACKS = ("alasco-app-staging-staging",
+                    "alasco-app-production-production",
+                    "alasco-app-production-demo")
 
 
 def _create_repo_client(repo: str) -> github.Repository.Repository:
@@ -117,7 +119,7 @@ def remove_branchless_stacks(repo: str, region: str):
     if not stacks_to_check:
         print("Found no stacks to be deleted")
         return
-    
+
     print("Deleting stacks:")
     for stack in stacks_to_check:
         print("  - {}".format(stack))
