@@ -32,7 +32,7 @@ _PROTECTED_STACKS = (
     "alasco-app-production-production",
     "alasco-app-production-demo",
 )
-_PROTECTED_BRANCHES = ("staging", "production", "demo")
+_PROTECTED_BRANCHES = ("staging", "master", "demo")
 
 
 def _create_repo_client(repo: str) -> github.Repository.Repository:
