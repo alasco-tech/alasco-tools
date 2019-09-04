@@ -32,6 +32,7 @@ _PROTECTED_STACKS = (
     "alasco-app-production-production",
     "alasco-app-production-demo",
 )
+_PROTECTED_BRANCHES = ("staging", "production", "demo")
 
 
 def _create_repo_client(repo: str) -> github.Repository.Repository:
@@ -112,22 +113,26 @@ def remove_branchless_stacks(repo: str, region: str):
     repo = _create_repo_client(repo)
     branches = set(branch.name for branch in repo.get_branches())
 
-    stacks_to_check = set()
+    stacks_to_delete = set()
     for branch, stack_name in stacks.items():
-        if branch in branches or branch in _PROTECTED_STACKS:
+        if (
+            branch in branches
+            or branch in _PROTECTED_BRANCHES
+            or stack_name in _PROTECTED_STACKS
+        ):
             continue
-        stacks_to_check.add(stack_name)
+        stacks_to_delete.add(stack_name)
 
-    if not stacks_to_check:
+    if not stacks_to_delete:
         print("Found no stacks to be deleted")
         return
 
     print("Deleting stacks:")
-    for stack in stacks_to_check:
+    for stack in stacks_to_delete:
         print("  - {}".format(stack))
 
-    _clean_s3_bucket(stacks_to_check, region)
-    _delete_stacks(stacks_to_check, region)
+    _clean_s3_bucket(stacks_to_delete, region)
+    _delete_stacks(stacks_to_delete, region)
 
 
 def main():
