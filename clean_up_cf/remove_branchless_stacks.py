@@ -64,9 +64,12 @@ def _clean_s3_bucket(stacks: Set[str], region: str):
     s3_client = boto3.client("s3")
 
     for stack_name in stacks:
-        stack_desc = cf_client.describe_stacks(StackName=stack_name)["Stacks"][0][
-            "Outputs"
-        ]
+        try:
+            stack_desc = cf_client.describe_stacks(StackName=stack_name)["Stacks"][0][
+                "Outputs"
+            ]
+        except KeyError:
+            print(f"Stack {stack_name} seems to be broken! (No `Outputs`) - skipping")
         stack_outputs = {item["OutputKey"]: item["OutputValue"] for item in stack_desc}
         s3_bucket_name = stack_outputs["PrivateAssetsBucketDomainName"].replace(
             ".s3.amazonaws.com", ""
