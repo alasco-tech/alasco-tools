@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   run_build:
     docker:
-      - image: circleci/python:3.7
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:
@@ -14,7 +14,7 @@ jobs:
 
   remove_branchless_stacks:
     docker:
-      - image: circleci/python:3.7
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:

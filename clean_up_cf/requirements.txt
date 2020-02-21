@@ -1,2 +1,2 @@
-boto3~=1.9.139
-PyGithub~=1.43.7
+boto3~=1.12.4
+PyGithub~=1.46
